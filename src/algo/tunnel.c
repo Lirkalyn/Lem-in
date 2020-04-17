@@ -77,7 +77,7 @@ int tunnel_nb_finder(input_t *info, int *nb_tmp)
             if (line[i] == '-' && i != 0 && line[(i + 1)] != '\0'
                 && line[(i + 1)] != '\n')
                 nb++;
-//        printf("tunnel = %d et %d = %s", nb, check, line);
+        printf("tunnel = %d et %d = %s", nb, check, line);
         if (nb == 1 && check == 0)
             *nb_tmp += 1;
         if (check == 0)

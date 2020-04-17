@@ -17,7 +17,8 @@ int all_filler(input_t *info, ant_t **ant, room_t **rooms, tunnel_t **tunnel);
 int rooms_nb_finder(input_t *info, int *nb_tmp);
 int tunnel_nb_finder(input_t *info, int *nb_tmp);
 int go_too_far(char *line);
+ant_t *ant_initializer(ant_t *ant, input_t *info);
 
-int is_separator(char *line);
+//int is_separator(char *line);
 
 #endif

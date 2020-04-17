@@ -64,7 +64,7 @@ int rooms_nb_finder(input_t *info, int *nb_tmp)
 
     while (info->next != NULL && bool_rooms_done == 0) {
         nb_tmp_2 = rooms_nb_finder_2(info->line);
-//        printf("rooms = %d = %s", nb_tmp_2, info->line);
+        printf("rooms = %d = %s", nb_tmp_2, info->line);
         *nb_tmp += (nb_tmp_2 == 1) ? 1 : 0;
         bool_rooms_done = (nb_tmp_2 == -1) ? 1 : bool_rooms_done;
         if (nb_tmp_2 == -2) {

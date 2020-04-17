@@ -13,6 +13,7 @@ SRC	=	main.c \
 		src/algo/filler.c \
 		src/algo/rooms.c \
 		src/algo/tunnel.c \
+		src/algo/ant.c \
 
 OBJ	=	$(SRC:.c=.o)
 
