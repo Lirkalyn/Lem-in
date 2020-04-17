@@ -11,7 +11,7 @@ SRC	=	main.c \
 		src/display.c \
 		src/algo/input.c \
 		src/algo/filler.c \
-		src/algo/filler_2.c \
+		src/algo/rooms.c \
 		src/algo/tunnel.c \
 
 OBJ	=	$(SRC:.c=.o)
