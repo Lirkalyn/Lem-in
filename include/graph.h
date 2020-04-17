@@ -8,7 +8,7 @@
 #ifndef __GRAPH_H__
 #define __GRAPH_H__
 
-#include "my.h"
+#include "header.h"
 #include "struct.h"
 
 void *rooms(list_t **room, int nb);
