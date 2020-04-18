@@ -8,14 +8,62 @@
 #include "../../include/my.h"
 #include "../../include/algo.h"
 
+int is_comment(char *line)
+{
+    int i = 0;
+    int space = 0;
+    int space_ok = 0;
+
+    for (; line[i] != '\0' && line[i] != '\n'; i++) {
+        if (line[i] == ' ')
+            space = 1;
+        else if (space == 1 && line[i] == '#')
+            space_ok = 1;
+        if (((line[i] < '0' || line[i] > '9') && line[i] != '#')
+            && (space == 0))
+            return 0;
+    }
+    if (space_ok == 1)
+        return 1;
+    else if (space == 1)
+        return 0;
+    else
+        return 1;
+    return 1;
+}
+
+int space_error(char *line)
+{
+    int i = 0;
+    int space = 0;
+    int ok = 0;
+
+    for (; line[i] != '\0' && line[i] != '\n' && line[i] != '#'; i++);
+    if (line[i] == '#')
+        for (i--; i >= 0;) {
+            if (line[i] == ' ' && ok == 0)
+                i--;
+            else if (line[i] >= '0' && line[i] <= '9') {
+                ok = 1;
+                i--;
+            }
+            if (line[i] == ' ' && ok == 1)
+                return 0;
+        }
+    return 1;
+}
+
 int ant_nb_finder(char *line, int *nb)
 {
     int i = 0;
+    int ok = is_comment(line);
+    int ok_2 = space_error(line);
+    int space = 0;
 
-    for (; line[i] != '\0' && line[i] != '\n'; i++)
-        if (line[i] < '0' || line[i] > '9')
-            return -84;
-        else {
+    if (ok == 0 || ok_2 == 0)
+        return -84;
+    for (; line[i] != '\0' && line[i] != '\n' && line[i] != ' '
+            && line[i] != '#'; i++) {
             *nb *= 10;
             *nb += (line[i] - '0');
         }

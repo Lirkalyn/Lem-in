@@ -18,6 +18,7 @@ int rooms_nb_finder(input_t *info, int *nb_tmp);
 int tunnel_nb_finder(input_t *info, int *nb_tmp);
 int go_too_far(char *line);
 ant_t *ant_initializer(ant_t *ant, input_t *info);
+int diff_maker(char *line);
 
 //int is_separator(char *line);
 

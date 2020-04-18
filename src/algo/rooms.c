@@ -38,6 +38,7 @@ int rooms_nb_finder_2(char *line)
     int i = 0;
     int pos = 0;
     int check = 0;
+    int dif = diff_maker(line);
 
     if (my_strcmp(line, "##start") == 0 || my_strcmp(line, "##end") == 0)
         return 0;
@@ -48,7 +49,7 @@ int rooms_nb_finder_2(char *line)
     i += (line[i] == ' ') ? 1 : 0;
     for (; line[i] != '\0' && line[i] != '\n'; i++) {
         pos += (line[i] == ' ') ? 1 : 0;
-        if (line[i] == '#' && pos >= 1)
+        if (line[i] == '#' && pos >= 1 && ((pos - dif) < 2))
             return 1;
         else if ((line[i] < '0' || line[i] > '9') && line[i] != ' ')
             return (go_too_far(line) == 1) ? -1 : -84;

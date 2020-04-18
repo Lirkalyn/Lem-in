@@ -12,6 +12,7 @@ SRC	=	main.c \
 		src/algo/input.c \
 		src/algo/filler.c \
 		src/algo/rooms.c \
+		src/algo/rooms_2.c \
 		src/algo/tunnel.c \
 		src/algo/ant.c \
 
