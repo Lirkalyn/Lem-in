@@ -19,6 +19,7 @@ SRC	=	main.c \
 		src/algo/tunnel_3.c \
 		src/algo/tunnel_4.c \
 		src/algo/ant.c \
+		src/display/displayer.c \
 
 OBJ	=	$(SRC:.c=.o)
 

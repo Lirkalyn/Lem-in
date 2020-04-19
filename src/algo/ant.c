@@ -93,7 +93,6 @@ ant_t *ant_initializer(ant_t *ant, input_t *info)
             info = info->next;
         }
     }
-//    printf("ant = %d\n", nb_tmp);
         ant = (bool_ant_nb == -84) ? NULL : malloc(nb_tmp * sizeof(ant_t));
         if (ant == NULL)
             return NULL;

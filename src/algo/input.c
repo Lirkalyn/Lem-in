@@ -8,14 +8,14 @@
 #include "../../include/struct.h"
 #include "../../include/my.h"
 
-input_t *input_rewinder(input_t *info) // va faire remonter info jusqu'à ça première casse mémoire. puis le retourne
+input_t *input_rewinder(input_t *info)
 {
     while (info->preview != NULL)
         info = info->preview;
     return info;
 }
 
-input_t *input_mallocer(void) // va malloc et initialiser toute les variable d'info avant de le retourner.
+input_t *input_mallocer(void)
 {
     input_t *info = malloc(sizeof(input_t));
 
@@ -26,7 +26,7 @@ input_t *input_mallocer(void) // va malloc et initialiser toute les variable d'i
     return info;
 }
 
-input_t *input_filler(input_t *info, char *buf, ssize_t read) // met toute les information là où elle doivent se trouver + link les cases mémoire adjacente.
+input_t *input_filler(input_t *info, char *buf, ssize_t read)
 {
     void *tmp;
 
@@ -41,7 +41,7 @@ input_t *input_filler(input_t *info, char *buf, ssize_t read) // met toute les i
     return info;
 }
 
-input_t *input_taker(void) // gére toute la récupération de l'entrée.
+input_t *input_taker(void)
 {
     input_t *info = input_mallocer();
     char *buf = NULL;

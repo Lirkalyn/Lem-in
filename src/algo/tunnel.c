@@ -41,7 +41,7 @@ int is_separator(char *line)
         return -3;
     for (; line[j] != '\0' && line[j] != '\n' && line[j] != '-'; j++);
     if (j == len)
-        return -1; // useless?
+        return -1;
     else
         return 0;
 }
@@ -77,7 +77,6 @@ int tunnel_nb_finder(input_t *info, int *nb_tmp)
             if (line[i] == '-' && i != 0 && line[(i + 1)] != '\0'
                 && line[(i + 1)] != '\n')
                 nb++;
-//        printf("tunnel = %d et %d = %s", nb, check, line);
         if (nb == 1 && check == 0)
             *nb_tmp += 1;
         if (check == 0)

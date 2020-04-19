@@ -23,7 +23,6 @@ void route(lemin_t *lem, list_t **room)
 {
     int a = 0, ant = 1;
 
-    //my_printf("|Route Display|");
     my_putstr("|Route Display|", 0);
     while (lem->dis_ants[lem->ant_nb] != lem->tab_len) {
         while (++a < ant) {
@@ -31,7 +30,6 @@ void route(lemin_t *lem, list_t **room)
                 write(1, "L", 1);
                 my_put_nbr(a);
                 write(1, "-", 1);
-//                my_putstr(display_rooms(room, (lem->way[lem->dis_ants[a]])), 0);
                 write(1, " ", 1);
                 lem->dis_ants[a]++;
             }
@@ -51,5 +49,4 @@ void ants(list_t **room, lemin_t *lem)
         return;
     for (; a >= 0; a--)
         lem->dis_ants[a] = 1;
-//    display(lem, room);
 }
