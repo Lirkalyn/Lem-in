@@ -52,9 +52,10 @@ typedef struct Tunnel {
 
 typedef struct Room {
     int nb; // pour connaitre le nombre totale de pièce
-    char *name; // le nom officiel du tunnel. obtenue dans l'input
+    char *name; // le nom officiel de la pièce . obtenue dans l'input
     int id; // pour reconnaitre facile les différente pièce.
-    int special; // si la salle est start ou  end = 1. comme ça on sait dans quelle salle ne pas vérifier occupy.
+    int start; // si la salle est start ou  end = 1. comme ça on sait dans quelle salle ne pas vérifier occupy.
+    int end; // si la salle est start ou  end = 1. comme ça on sait dans quelle salle ne pas vérifier occupy.
     int occupy; // si une fourmit est déjà dedans = 1.
     int x; // position x of the room.
     int y; // position x of the room.

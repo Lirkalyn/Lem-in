@@ -32,13 +32,39 @@ int main(void)
     init(&lem);
 
     info = input_taker();
-/*    while (info->next != NULL)
-    {
-        info = info->next;
-    }
-*/
     if (all_filler(info, &ant, &rooms, &tunnel) == 84)
         return 84;
-    //printf("%d\n", ant->nb);
+    if (ant == NULL || rooms == NULL || tunnel == NULL)
+        return 84;
+    printf("ant = %d\n", ant->nb);
+    printf("rooms\n\n");
+    for (int i = 0; i < rooms->nb; i++) {
+        printf("room : %d\n", i);
+        printf("nb = %d\n", rooms[i].nb);
+        printf("name = %s\n", rooms[i].name);
+        printf("id = %d\n", rooms[i].id);
+        printf("start = %d\n", rooms[i].start);
+        printf("end = %d\n", rooms[i].end);
+        printf("occupy = %d\n", rooms[i].occupy);
+        printf("x = %d\n", rooms[i].x);
+        printf("y = %d\n", rooms[i].y);
+        printf("\n\n");
+    }
+
+    printf("tunnel\n\n");
+
+    for (int i = 0; tunnel[i].good == 1; i++) {
+        printf("i = %d\n", i);
+        printf("good = %d\n", tunnel[i].good);
+        printf("nb = %d\n", tunnel[i].nb);
+        printf("name = %s\n", tunnel[i].name);
+        printf("occupy = %d\n", tunnel[i].occupy);
+        printf("f_node_name = %s\n", tunnel[i].f_node_name);
+        printf("f_node_id = %d\n", tunnel[i].f_node_id);
+        printf("l_node_name = %s\n", tunnel[i].l_node_name);
+        printf("l_node_id = %d\n", tunnel[i].l_node_id);
+        printf("\n\n");
+    }
+
     return 0;
 }

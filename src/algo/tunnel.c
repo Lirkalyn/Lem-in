@@ -65,9 +65,9 @@ int tunnel_nb_finder(input_t *info, int *nb_tmp)
 {
     int nb = 0;
     int check = 0;
-    char *line = NULL;
+    char *line = info->line;
 
-    while (info->next != NULL) {
+    while (info->next != NULL && line[0] != '\n' && line[0] != '\0') {
         line = info->line;
         check = is_separator(line);
         check += (check == 0) ? too_much_sep(line) : 0;
@@ -77,7 +77,7 @@ int tunnel_nb_finder(input_t *info, int *nb_tmp)
             if (line[i] == '-' && i != 0 && line[(i + 1)] != '\0'
                 && line[(i + 1)] != '\n')
                 nb++;
-        printf("tunnel = %d et %d = %s", nb, check, line);
+//        printf("tunnel = %d et %d = %s", nb, check, line);
         if (nb == 1 && check == 0)
             *nb_tmp += 1;
         if (check == 0)

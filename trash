@@ -33,3 +33,104 @@ int all_filler(input_t *info, ant_t **ant, room_t **rooms, tunnel_t **tunnel)
             return 84;
         rooms[0] = ant_initializer(rooms[0], nb_tmp);*/
 }
+
+
+
+
+
+
+
+V2
+
+int all_filler(input_t *info, ant_t **ant, room_t **rooms, tunnel_t **tunnel)
+{
+    int nb_tmp = 0;
+    int nb_tmp_2 = 0;
+    int forward = 0;
+
+    ant[0] = ant_initializer(ant[0], info);
+    if (ant[0] == NULL)
+        return 84;
+    else
+        info = info->next;
+//    printf("ant = %d\n", ant[0]->nb);
+
+    forward = rooms_nb_finder(info, &nb_tmp);
+    if (forward == -84)
+        return 84;
+    else {
+//        printf("rooms = %d\n", nb_tmp);
+//        printf("forward = %d\n", forward);
+        for (int i = 0; i < (forward - 1); i++)
+            info = info->next;
+    }
+
+    tunnel_nb_finder(info, &nb_tmp_2);
+//    printf("\ntunnel = %d\n", nb_tmp_2);
+}
+
+
+
+
+static int my_strcmp(char const *s1, char const *s2)
+{
+    int i;
+
+    for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
+        if (s1[i] != s2[i])
+            return ((s1[i] - s2[i]));
+    return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+tunnel_t *tunnel_filler(tunnel_t *tunnel, input_t *info, int nb, room_t *rooms)
+{
+    char *line = info->line;
+    int ok = 0;
+    int *pos;
+    int where = 0;
+
+    tunnel = tunnel_initializer(tunnel, nb);
+    if (tunnel == NULL)
+        return NULL;
+    while (info->next != NULL && line[0] != '\n' && line[0] != '\0'
+            && ok == 0) {
+        jump(&info, &line, line);
+        pos = same_finder(line, rooms);
+//        printf("0 = %d, 1 = %d et %s", pos[0], pos[1], line);
+        if (pos == NULL)
+            return NULL;
+        else if (pos[0] == -42 || pos[1] == -42 || last_check(line) == 1)
+            ok = 1;
+        tunnel = (ok != 1) ? nod_fil(tunnel, rooms, pos, where) : tunnel;
+        where += (ok != 1) ? 1 : 0;
+        info = info->next;
+        line = info->line;
+    }
+/*
+    for (int i = 0; tunnel[i].good == 1; i++) {
+        printf("i = %d\n", i);
+        printf("good = %d\n", tunnel[i].good);
+        printf("nb = %d\n", tunnel[i].nb);
+        printf("name = %s\n", tunnel[i].name);
+        printf("occupy = %d\n", tunnel[i].occupy);
+        printf("f_node_name = %s\n", tunnel[i].f_node_name);
+        printf("f_node_id = %d\n", tunnel[i].f_node_id);
+        printf("l_node_name = %s\n", tunnel[i].l_node_name);
+        printf("l_node_id = %d\n", tunnel[i].l_node_id);
+        printf("\n\n");
+    }
+*/
+    return tunnel;
+}

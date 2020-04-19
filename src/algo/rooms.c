@@ -8,10 +8,16 @@
 #include "../../include/my.h"
 #include "../../include/algo.h"
 
-static int my_strcmp(char const *s1, char const *s2)
+int my_strcmp(char const *s1, char const *s2)
 {
     int i;
+    int len = 0;
+    int men = 0;
 
+    for (; s1[len] != '\0'; len++);
+    for (; s2[men] != '\0'; men++);
+    if (len != men)
+        return 1;
     for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
         if (s1[i] != s2[i])
             return ((s1[i] - s2[i]));
@@ -65,7 +71,7 @@ int rooms_nb_finder(input_t *info, int *nb_tmp)
 
     while (info->next != NULL && bool_rooms_done == 0) {
         nb_tmp_2 = rooms_nb_finder_2(info->line);
-        printf("rooms = %d = %s", nb_tmp_2, info->line);
+//        printf("rooms = %d = %s", nb_tmp_2, info->line);
         *nb_tmp += (nb_tmp_2 == 1) ? 1 : 0;
         bool_rooms_done = (nb_tmp_2 == -1) ? 1 : bool_rooms_done;
         if (nb_tmp_2 == -2) {
@@ -82,33 +88,20 @@ int rooms_nb_finder(input_t *info, int *nb_tmp)
     return forward;
 }
 
-int rooms_placer(char *oldline, char *line, int *nb)
+room_t *rooms_initializer(room_t *rooms, input_t *info, int nb, int forward)
 {
-    char *name = NULL;
     int i = 0;
-    int len = 0;
-    int coord[4] = {[0 ... 3] = 0};
-    int pos = 0;
 
-//
-    for (; line[len] != '\0' && line[len] != '\n' && line[len] != ' '; len++);
-    name = malloc((len + 1) * sizeof(char));
-    if (name == NULL)
-        return -84;
-    name[len] = '\0';
-    i += (line[i] == ' ') ? 1 : 0;
-    for (i = 0; line[i] != '\0' && line[i] != '\n' && line[i] != ' '; i++)
-        name[i] = line[i];
-//
-    while (line[i] != '\0' && line[i] != '\n') {
-        for (; line[i] != '\0' && line[i] != '\n' && line[i] != ' '; i++)
-            if (line[i] < '0' || line[i] > '9')
-                return -84;
-            else {
-                coord[pos] *= 10;
-                coord[pos] += (line[i] - '0');
-            }
-        pos += 1;
-    }
-    return 1;
+    rooms = malloc((nb + 1) * sizeof(room_t));
+    if (rooms == NULL)
+        return NULL;
+    for (; i < nb; i++)
+        rooms[i].nb = nb;
+    rooms = rooms_initializer_2(rooms, nb);
+    rooms = rooms_filler(rooms, info, nb, forward);
+/*
+    for (int j = 0; j < nb; j++)
+        printf("x = %d, y = %d, start = %d, end = %d et %s\n", rooms[j].x, rooms[j].y, rooms[j].start, rooms[j].end, rooms[j].name);
+*/
+    return rooms;
 }
