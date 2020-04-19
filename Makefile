@@ -20,6 +20,8 @@ SRC	=	main.c \
 		src/algo/tunnel_4.c \
 		src/algo/ant.c \
 		src/display/displayer.c \
+		src/pathfinding/check.c \
+		src/pathfinding/start_a.c \
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -33,6 +33,9 @@ int main(void)
         return 84;
     if (ant == NULL || rooms == NULL || tunnel == NULL)
         return 84;
+    if (check_before_start(ant, rooms, tunnel) == 84)
+        return 84;
     disp(ant, rooms, tunnel);
+    ant = ant_pos(ant, rooms);
     return 0;
 }

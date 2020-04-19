@@ -36,5 +36,7 @@ int last_check(char *line);
 int too_much_sep(char *line);
 void jump(input_t **info, char **line, char *str, int opt);
 tunnel_t *tunnel_initializer(tunnel_t *tunnel, int nb);
+int check_before_start(ant_t *ant, room_t *rooms, tunnel_t *tunnel);
+ant_t *ant_pos(ant_t *ant, room_t *rooms);
 
 #endif
