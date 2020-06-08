@@ -10,6 +10,7 @@ SRC	=	main.c \
 		src/display/begin_display.c \
 		src/display.c \
 		src/algo/input.c \
+		src/algo/input_2.c \
 		src/algo/filler.c \
 		src/algo/rooms.c \
 		src/algo/rooms_2.c \

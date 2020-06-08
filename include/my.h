@@ -17,5 +17,6 @@ int my_putstr(char *str, int opt);
 int my_puterror(char *str, int opt);
 int my_put_nbr(int nb);
 void disp(ant_t *ant, room_t *rooms, tunnel_t *tunnel);
+char *rm_begining_space(char *buf, int read);
 
 #endif

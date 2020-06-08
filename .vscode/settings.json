@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "racket": "racket",
-        "graph.h": "c",
-        "my.h": "c"
-    }
-}

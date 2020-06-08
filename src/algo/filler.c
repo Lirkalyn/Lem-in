@@ -8,10 +8,19 @@
 #include "../../include/my.h"
 #include "../../include/algo.h"
 
+tunnel_t *pre_tu_fill(input_t *info, tunnel_t *tunnel, room_t *rooms)
+{
+    int nb_tmp_2 = 0;
+
+    tunnel_nb_finder(info, &nb_tmp_2);
+    tunnel = tunnel_initializer(tunnel, nb_tmp_2);
+    tunnel = tunnel_filler(tunnel, info, nb_tmp_2, rooms);
+    return tunnel;
+}
+
 int all_filler(input_t *info, ant_t **ant, room_t **rooms, tunnel_t **tunnel)
 {
     int nb_tmp = 0;
-    int nb_tmp_2 = 0;
     int forward = 0;
 
     ant[0] = ant_initializer(ant[0], info);
@@ -27,7 +36,5 @@ int all_filler(input_t *info, ant_t **ant, room_t **rooms, tunnel_t **tunnel)
         for (int i = 0; i < (forward - 1); i++)
             info = info->next;
     }
-    tunnel_nb_finder(info, &nb_tmp_2);
-    tunnel[0] = tunnel_initializer(tunnel[0], nb_tmp_2);
-    tunnel[0] = tunnel_filler(tunnel[0], info, nb_tmp_2, rooms[0]);
+    tunnel[0] = pre_tu_fill(info, tunnel[0], rooms[0]);
 }
